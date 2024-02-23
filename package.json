@@ -1,0 +1,22 @@
+{
+  "name": "nodejs-mentoring-program",
+  "version": "1.0.0",
+  "description": "learn nodejs project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreipadolin/node-js-mentoring-program.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Andrei Padolin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andreipadolin/node-js-mentoring-program/issues"
+  },
+  "homepage": "https://github.com/andreipadolin/node-js-mentoring-program#readme"
+}

@@ -1,2 +1,1 @@
-# node-js-mentoring-program
-Node.js Mentoring Program
+# Node.js Mentoring Program
