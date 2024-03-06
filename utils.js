@@ -5,6 +5,7 @@ const getOSPlatform = () => os.platform();
 const getCommandBasedOnOSPlatform = (platformName) => {
   switch (platformName) {
     case "linux":
+    case "darwin":
       return `ps -A -o %cpu,%mem,comm | sort -nr | head -n 1`;
     case "win32":
       return `Get-Process | Sort-Object CPU -Descending | Select-Object -Property Name, CPU, WorkingSet -First 1 | ForEach-Object { $_.Name + ' ' + $_.CPU + ' ' + $_.WorkingSet }`;
