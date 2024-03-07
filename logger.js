@@ -1,7 +1,5 @@
 const fs = require("fs");
 
-//const filePath = "log.txt";
-
 const log = (filePath, loggingData) =>
   fs.access(filePath, fs.constants.F_OK, (err) => {
     if (err) {

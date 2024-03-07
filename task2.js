@@ -1,16 +1,16 @@
 const utils = require("./utils");
 const logger = require("./logger");
-const filePath = "log.txt";
+const filePath = "activityMonitor.log";
 
 const osPlatformName = utils.getOSPlatform();
 const command = utils.getCommandBasedOnOSPlatform(osPlatformName);
 
-const consoleLoggingInterval = 1000; // 1 sec
-const fileLoggingInterval = 15000; // 15 sec
+const consoleLoggingInterval = 1000; // 1 sec  values of 100 focses system lags on win
+const fileLoggingInterval = 10000; // 60 sec
 let ticks = 0;
 
 setInterval(() => {
-  utils.execProcess(command, function (err, res) {
+  utils.execProcess(command, (err, res) => {
     if (err) {
       throw new Error(`error: ${err}`);
     } else {
