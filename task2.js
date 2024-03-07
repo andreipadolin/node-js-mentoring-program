@@ -5,8 +5,8 @@ const filePath = "activityMonitor.log";
 const osPlatformName = utils.getOSPlatform();
 const command = utils.getCommandBasedOnOSPlatform(osPlatformName);
 
-const consoleLoggingInterval = 1000; // 1 sec  values of 100 focses system lags on win
-const fileLoggingInterval = 10000; // 60 sec
+const consoleLoggingInterval = 100; //  values of 100 force system lags on win
+const fileLoggingInterval = 6000;
 let ticks = 0;
 
 setInterval(() => {
