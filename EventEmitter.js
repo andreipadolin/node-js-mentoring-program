@@ -26,9 +26,25 @@ module.exports = class EventEmitter {
     return this.addListener(eventName, fn);
   }
 
-  removeListener(eventName, fn) {}
+  removeListener(eventName, fn) {
+    if (!eventName) {
+      throw new Error("Event name is required");
+    }
+    if (!fn) {
+      throw new Error("Handler is required");
+    }
 
-  off(eventName, fn) {}
+    if (this.listeners[eventName]) {
+      this.listeners[eventName] = this.listeners[eventName].filter(
+        (listener) => listener !== fn
+      );
+    }
+    return this;
+  }
+
+  removeEventListener(eventName, fn) {
+    return this.off(eventName, fn);
+  }
 
   once(eventName, fn) {}
 
