@@ -1,5 +1,5 @@
 module.exports = class EventEmitter {
-  listeners = {}; // Object to store event listeners
+  listeners = {};
 
   addListener(eventName, fn) {
     if (!eventName) {
@@ -12,17 +12,10 @@ module.exports = class EventEmitter {
       this.listeners[eventName] = [];
     }
     this.listeners[eventName].push(fn);
-    console.log("LISTENERS :>> ", this.listeners);
     return this;
   }
 
   on(eventName, fn) {
-    // if (!this.listeners[eventName]) {
-    //   this.listeners[eventName] = [];
-    // }
-    // this.listeners[eventName].push(fn);
-    // console.log("LISTENERS :>> ", this.listeners);
-    // return this;
     return this.addListener(eventName, fn);
   }
 
@@ -52,7 +45,6 @@ module.exports = class EventEmitter {
       fn();
       this.removeListener(eventName, onceWrapper);
     };
-    //this.listeners[eventName].push(onceWrapper);
     this.addListener(eventName, onceWrapper);
     return this;
   }
