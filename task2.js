@@ -1,30 +1,29 @@
-const WithTime = require("./WithTime");
-const https = require("https");
+const utils = require("./utils");
+const logger = require("./logger");
+const filePath = "activityMonitor.log";
 
-const fetchFromUrl = (url, cb) => {
-  https
-    .get(url, (response) => {
-      let data = "";
+const osPlatformName = utils.getOSPlatform();
+const command = utils.getCommandBasedOnOSPlatform(osPlatformName);
 
-      response.on("data", (chunk) => {
-        data += chunk;
-      });
+const consoleLoggingInterval = 100; //  values of 100 force system lags on win
+const fileLoggingInterval = 6000;
+let ticks = 0;
 
-      response.on("end", () => {
-        cb(null, JSON.parse(data));
-      });
-    })
-    .on("error", (error) => {
-      cb(error);
-    });
-};
-
-const withTime = new WithTime();
-
-withTime.on("start", () => console.log("About to execute"));
-withTime.on("data", (value) => console.log("Async func results:", value));
-withTime.on("end", (time) => console.log("Done with execute:", time));
-
-withTime.execute(fetchFromUrl, "https://jsonplaceholder.typicode.com/posts/3");
-
-console.log("rawListeners", withTime.rawListeners("end"));
+setInterval(() => {
+  utils.execProcess(command, (err, res) => {
+    if (err) {
+      throw new Error(`error: ${err}`);
+    } else {
+      console.clear();
+      console.log(res);
+      if (ticks > 0 && ticks % fileLoggingInterval === 0) {
+        logger.log(
+          filePath,
+          `<${Math.floor(Date.now() / 1000)}>: ${res.toString()}`
+        );
+        ticks = 0;
+      }
+      ticks += consoleLoggingInterval;
+    }
+  });
+}, consoleLoggingInterval);
