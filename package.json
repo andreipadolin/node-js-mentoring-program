@@ -4,7 +4,7 @@
   "description": "learn nodejs project",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon task2.js"
   },
   "repository": {
     "type": "git",
