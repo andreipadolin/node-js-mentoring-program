@@ -8,7 +8,8 @@
     "task2": "nodemon task2.js",
     "task31": "nodemon task31.js",
     "task32": "nodemon task32.js",
-    "task33": "nodemon task33.js"
+    "task33": "nodemon task33.js",
+    "task4": "cd task-4-testing && npm i && npm run test && npm run test:e2e && npm run test:coverage"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,9 @@
   },
   "homepage": "https://github.com/andreipadolin/node-js-mentoring-program#readme",
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.0",
+    "supertest": "^6.3.4"
   },
   "dependencies": {
     "csvtojson": "^2.0.10"
